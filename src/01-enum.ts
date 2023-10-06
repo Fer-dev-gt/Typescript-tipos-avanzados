@@ -1,13 +1,13 @@
 // Una de las ventajas de usar ENUMs es que podemos definir un conjunto de valores que son válidos para una variable o propiedad y nos obliga a usar solo esos valores de lo contrario nos dará un error.
 
-enum ROLES {                                         // Definimos un ENUM con los 3 roles disponibles, solo esos 3 valores serán válidos para la propiedad 'role'
+export enum ROLES {                                         // Definimos un ENUM con los 3 roles disponibles, solo esos 3 valores serán válidos para la propiedad 'role'
   ADMIN = 'admin',                                   // Por convención es mejor usar mayúsculas para los valores/keys de los ENUMs y el nombre del ENUM en singular y mayúscula
   SELLER = 'seller',
   CUSTOMER = 'customer'
 }
 
 
-type User = {                                         // Definimos un tipo User con 2 propiedades, la propiedad 'role' solo puede tener los valores definidos en el ENUM ROLES
+export type User = {                                         // Definimos un tipo User con 2 propiedades, la propiedad 'role' solo puede tener los valores definidos en el ENUM ROLES
   username: string;
   role: ROLES;
 }
