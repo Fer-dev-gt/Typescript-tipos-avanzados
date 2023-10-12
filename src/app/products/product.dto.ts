@@ -22,3 +22,9 @@ export interface UpdateProductDTO extends Partial<CreateProductDTO> {}      // H
 
 // Cuando usamos 'Required' en una interfaz, esto significa que todas las propiedades de la interfaz serán requeridas/obligatorias. Es lo contrario de 'Partial'.
 type example2 = Required<Product>;                                          // Aqui se define un 'type' llamado example2 que es un 'Required' de la interfaz Product, esto significa que el 'type' example2 tendrá las propiedades que se especifiquen en el 'Required', en este caso, las propiedades que se especifican son: title, description, price, stock, isNew, image, color, size, tags, category. Hace que todas las propiedades de la interfaz Product sean requeridas/obligatorias.
+
+
+// Interfaz que define la estructura de un producto. Aplicamos Herencia para que esta interfaz FindProductDTO herede las propiedades de la interfaz ProductInterface. Las propiedades de la interfaz ProductInterface que NO usaremos son: id, createdAt, updatedAt, category. Aplicamos 'Partial' para que todas las propiedades de la interfaz Product sean opcionales.
+export interface FindProductDTO extends Readonly<Partial<ProductInterface>> {}       // Aplicamos 'Readonly' para que el parámetro 'dto' de la función 'findProducts()' sea de solo lectura, esto significa que no se podrá modificar, si se intenta modificar, se mostrará un error.
+
+type example3 = Readonly<ProductInterface>;                                          // Aplica un 'Readonly' a todas las propiedades de la interfaz 'ProductInterface', esto significa que todas las propiedades de la interfaz ProductInterface serán de solo lectura, y no se podrán modificar.

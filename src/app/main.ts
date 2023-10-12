@@ -1,7 +1,7 @@
 // En este archivo se ejecuta la función addProduct() que esta definida en el archivo product.service.ts, esta función recibe un objeto con la estructura de un producto, y lo agrega al array de productos.
 
-import { addProduct, products, updateProduct } from "./products/product.service";           // Importamos la función addProduct() y el array de productos desde el archivo product.service.ts.
-import { faker } from '@faker-js/faker';                                     // Importamos la librería 'faker' para generar datos aleatorios de los productos para hacer pruebas.
+import { addProduct, products, updateProduct, findProducts } from "./products/product.service";           // Importamos la función addProduct() y el array de productos desde el archivo product.service.ts.
+import { faker} from '@faker-js/faker';                                      // Importamos la librería 'faker' para generar datos aleatorios de los productos para hacer pruebas.
 
 for (let index = 0; index < 50; index++) {                                   // Definimos un ciclo 'for' para ejecutar la función addProduct() 50 veces.
   addProduct({                                                               // Ejecuto la función addProduct() que esta definida en el archivo product.service.ts, esta función recibe un objeto con la estructura de un producto, y lo agrega al array de productos.
@@ -25,4 +25,12 @@ const product = products[0];                                                 // 
 updateProduct(product.id, {                                                  // Ejecutamos la función 'updateProduct()' que esta definida en el archivo product.service.ts, esta función recibe el id del producto que queremos actualizar, y un objeto con las propiedades que queremos actualizar.
   title: 'Nuevo titulo',                                                     // Como updateProduct() recibe un objeto con las propiedades que queremos actualizar, podemos actualizar solo las propiedades que queremos actualizar, y las demás propiedades no se actualizarán ya que esta usaron 'Omit' en la interfaz UpdateProductDTO.
   stock: 1000,
+})
+
+
+findProducts({                                                               // Ejecutamos la función 'findProducts()' que esta definida en el archivo product.service.ts, esta función recibe un objeto con las propiedades del "FindProductDTO" que queremos buscar, y retorna un array de objetos con la estructura de un 'ProductInterface'.
+  stock: 10,
+  color: 'red',
+  createdAt: new Date(),
+  isNew: true,
 })

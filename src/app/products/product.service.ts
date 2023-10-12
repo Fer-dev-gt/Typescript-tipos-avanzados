@@ -1,7 +1,7 @@
 // Este archivo tendrá toda la manipulación de los productos, como agregar, eliminar, editar, etc. Para esto, se creará un array de productos, y se definirá una función para agregar productos a este array. Para esto, se creará un archivo product.service.ts en la carpeta products, y se importará en el archivo product.model.ts.
 
 import { ProductInterface } from './product.model';
-import { CreateProductDTO, UpdateProductDTO } from './product.dto';
+import { CreateProductDTO, FindProductDTO, UpdateProductDTO } from './product.dto';
 import { faker } from '@faker-js/faker';                              // Acá tambien importamos la librería 'faker' para generar datos aleatorios de los productos en este archivo para que solo aqui se generen los datos en este archivo que se encarga de esta sola responsabilidad.
 
 export const products: ProductInterface[] = [];                       // Usamos la 'Interfaz' importada desde el archivo product.model.ts para definir el tipo de datos de este array.
@@ -35,4 +35,11 @@ export const updateProduct = (id: string, changes: UpdateProductDTO): ProductInt
     ...changes                                                            // Usamos "destructuring" para copiar todas las propiedades del objeto 'changes' que se recibe como parámetro en la función updateProduct(), y agregarlas al objeto 'products[index]'.
   }                                                                       // Si solo mando '...changes' sin '...prevData', solo se actualizarán las propiedades que se reciban como parámetro en la función updateProduct(), y las demás propiedades no se actualizarán.
   return products[index];                                                 // Retornamos el producto actualizado.
+}
+
+
+
+export const findProducts = (dto: FindProductDTO): ProductInterface[] => {             // Esta función recibe un objeto con las propiedades del "FindProductDTO" que queremos buscar, y retorna un array de objetos con la estructura de un 'ProductInterface'.
+  //dto.color = '2';                                                                   // Como el parámetro 'dto' es de solo lectura (extiende de 'Readonly'), no se puede modificar, si se intenta modificar, se mostrará un error.
+  return products;                                                                     // Retornamos el array de productos.
 }
