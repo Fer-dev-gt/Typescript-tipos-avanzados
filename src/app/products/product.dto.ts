@@ -10,3 +10,15 @@ export interface CreateProductDTO extends Omit<ProductInterface, 'id' | 'created
 
 // Lo contrario de un 'Omit' es un 'Pick', que permite seleccionar las propiedades que queremos usar de una interfaz y solo esas propiedades.
 type example = Pick<ProductInterface, 'color' | 'description' >;            // Aqui se define un 'type' llamado example que es un 'Pick' de la interfaz ProductInterface, esto significa que el 'type' example tendrá las propiedades que se especifiquen en el 'Pick', en este caso, las propiedades que se especifican son: color, description.
+
+
+// Forma con type de definir un 'Partial' de una interfaz, esto significa que el 'type' UpdateProductoDTO tendrá las propiedades que se especifiquen en el 'Partial', en este caso, las propiedades que se especifican son: title, description, price, stock, isNew, image, color, size, tags, category. Hace que todas las propiedades de la interfaz Product sean opcionales.
+//type UpdateProductoDTO = Partial<ProductInterface>;
+
+
+// Utilizamos 'Partial' para definir la interfaz UpdateProductDTO, esto significa que la interfaz UpdateProductDTO tendrá las propiedades que se especifiquen en el 'Partial' estas quedaran como opcionales, en este caso, las propiedades que se especifican son: title, description, price, stock, isNew, image, color, size, tags, category. Hace que todas las propiedades de la interfaz Product sean opcionales.
+export interface UpdateProductDTO extends Partial<CreateProductDTO> {}      // Hacemos que para cuando queremos actualizar un producto, solo se puedan actualizar las propiedades que se especifican en el 'Partial' ya que estas serán opcionales, y las demás propiedades no se podrán actualizar.
+
+
+// Cuando usamos 'Required' en una interfaz, esto significa que todas las propiedades de la interfaz serán requeridas/obligatorias. Es lo contrario de 'Partial'.
+type example2 = Required<Product>;                                          // Aqui se define un 'type' llamado example2 que es un 'Required' de la interfaz Product, esto significa que el 'type' example2 tendrá las propiedades que se especifiquen en el 'Required', en este caso, las propiedades que se especifican son: title, description, price, stock, isNew, image, color, size, tags, category. Hace que todas las propiedades de la interfaz Product sean requeridas/obligatorias.

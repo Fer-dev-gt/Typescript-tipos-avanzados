@@ -1,6 +1,6 @@
 // En este archivo se ejecuta la función addProduct() que esta definida en el archivo product.service.ts, esta función recibe un objeto con la estructura de un producto, y lo agrega al array de productos.
 
-import { addProduct, products } from "./products/product.service";           // Importamos la función addProduct() y el array de productos desde el archivo product.service.ts.
+import { addProduct, products, updateProduct } from "./products/product.service";           // Importamos la función addProduct() y el array de productos desde el archivo product.service.ts.
 import { faker } from '@faker-js/faker';                                     // Importamos la librería 'faker' para generar datos aleatorios de los productos para hacer pruebas.
 
 for (let index = 0; index < 50; index++) {                                   // Definimos un ciclo 'for' para ejecutar la función addProduct() 50 veces.
@@ -19,3 +19,10 @@ for (let index = 0; index < 50; index++) {                                   // 
 }
 
 console.log(products);
+
+
+const product = products[0];                                                 // Escogemos el primer producto del array de productos y lo guardamos en la variable 'product'.
+updateProduct(product.id, {                                                  // Ejecutamos la función 'updateProduct()' que esta definida en el archivo product.service.ts, esta función recibe el id del producto que queremos actualizar, y un objeto con las propiedades que queremos actualizar.
+  title: 'Nuevo titulo',                                                     // Como updateProduct() recibe un objeto con las propiedades que queremos actualizar, podemos actualizar solo las propiedades que queremos actualizar, y las demás propiedades no se actualizarán ya que esta usaron 'Omit' en la interfaz UpdateProductDTO.
+  stock: 1000,
+})
