@@ -26,8 +26,8 @@ export const addProduct = (data: CreateProductDTO) : ProductInterface => {     /
 
 
 
-
-export const updateProduct = (id: string, changes: UpdateProductDTO): ProductInterface => {           // Esta función recibe el id del producto que queremos actualizar, y un objeto con las propiedades que queremos actualizar y retorna un objeto con la estructura de un 'ProductInterface'.
+// Esta función recibe el id del producto que queremos actualizar, y un objeto con las propiedades que queremos actualizar y retorna un objeto con la estructura de un 'ProductInterface'.
+export const updateProduct = (id: ProductInterface['id'], changes: UpdateProductDTO): ProductInterface => {
   const index = products.findIndex(item => item.id === id);               // Seleccionamos y guardamos el index del producto que queremos actualizar, esto con la ayuda del método findIndex() de JavaScript, el cual recibe una función como parámetro, y esta función recibe un parámetro que es el item del array, y retorna un booleano, si retorna 'true' significa que el item cumple con la condición, y si retorna 'false' significa que el item no cumple con la condición. En este caso, la condición es que el id del item sea igual al id que se recibe como parámetro en la función updateProduct().
   const prevData = products[index];                                       // Seleccionamos y guardamos el producto que queremos actualizar, esto con la ayuda del index que obtuvimos en la linea anterior.
   products[index] = {                                                     // Actualizamos el producto que queremos actualizar, esto con la ayuda del index que obtuvimos en la linea anterior.
