@@ -41,5 +41,9 @@ export const updateProduct = (id: ProductInterface['id'], changes: UpdateProduct
 
 export const findProducts = (dto: FindProductDTO): ProductInterface[] => {             // Esta función recibe un objeto con las propiedades del "FindProductDTO" que queremos buscar, y retorna un array de objetos con la estructura de un 'ProductInterface'.
   //dto.color = '2';                                                                   // Como el parámetro 'dto' es de solo lectura (extiende de 'Readonly'), no se puede modificar, si se intenta modificar, se mostrará un error.
+  // dto.isNew = true;                                                                 // No me deja porque 'isNew' es de solo lectura (extiende de 'Readonly').
+  // dto.tags = [];
+  // dto.tags?.pop();                                                                  // No me deja porque 'tags' es de solo lectura (extiende de 'Readonly') y ReadonlyArray<string> (extiende de 'Readonly').
+  // dto.tags?.push();                                                                 // No me deja porque 'tags' es de solo lectura (extiende de 'Readonly') y ReadonlyArray<string> (extiende de 'Readonly').
   return products;                                                                     // Retornamos el array de productos.
 }
